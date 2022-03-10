@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": [
+      "file:///media/andrew/Tests/iconify_flutter/.github/workflows/build.yml",
+      "file:///media/andrew/Tests/colorful_iconify/.github/workflows/publish_plugin.yml"
+    ]
+  }
+}

@@ -1,0 +1,1 @@
+Complementary package for [iconify_flutter](https://pub.dev/packages/iconify_flutter)
