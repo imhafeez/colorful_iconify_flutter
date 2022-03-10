@@ -4,8 +4,7 @@ on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:https://github.com//andronasef/iconify_flutter/blob/master/CHANGELOG.md
-      image: google/dart:latest
+    image: google/dart:latest
     steps:
       - uses: actions/checkout@v1
       - name: Setup credentials
