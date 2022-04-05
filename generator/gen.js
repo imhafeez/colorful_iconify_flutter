@@ -9,7 +9,11 @@ import {
 } from "@iconify/tools";
 import { exec } from "child_process";
 
+
 (async () => {
+    // make colorful icons or not
+    const colorful = true
+
     //  remove old and get new one
     await execShellCommand(
         "git clone https://github.com/iconify/icon-sets.git generator/icon-sets"
@@ -21,7 +25,7 @@ import { exec } from "child_process";
     }
     await fs.mkdir("lib/icons", { recursive: true });
 
-    // get colored icons list to make them
+    // get colored icons list to skip them
     let makeIcons = Object.entries(
         JSON.parse(
             await fs.readFile("generator/icon-sets/collections.json", "utf8")
@@ -41,9 +45,9 @@ import { exec } from "child_process";
     for (const iconset of iconsets) {
         // Skip Colored Iconsets
 
-        let makeit = true;
+        let makeit = false;
         makeIconsList.forEach((item) => {
-            if (item[0] == iconset.split(".")[0]) if (item[1] != true) makeit = false;
+            if (item[0] == iconset.split(".")[0]) if (item[1] == colorful) makeit = true;
         });
         if (!makeit) {
             console.log("skip " + iconset);
@@ -65,7 +69,7 @@ import { exec } from "child_process";
         const outputPath = `./lib/icons/${iconSetNameFile}.dart`;
 
         // make new file with (iconset name).dart (File Head)
-        fs.writeFile(outputPath, `class ${iconSetName} {`);
+        fs.writeFile(outputPath, `///Discover all icons of this package at https://andronasef.ninja/iconify_flutter/collection/${iconSet.prefix} \n class ${iconSetName} {`);
 
         // Validate, clean up, fix palette and optimise
         await iconSet.forEach(async (name, type) => {
@@ -115,7 +119,7 @@ import { exec } from "child_process";
                 /^\W|^\d/gm.test(newName) ||
                 reservedWords.includes(newName)
             )
-                newName = "_" + newName;
+                newName = "i_" + newName;
 
             icons.push(newName);
 
@@ -134,7 +138,7 @@ import { exec } from "child_process";
         icons.forEach((icon) => {
             iconsDartArrayString += `${icon},\n`;
         });
-        const iconsDartArray = `List iconsList = [${iconsDartArrayString}];}`;
+        const iconsDartArray = `static const List iconsList = [${iconsDartArrayString}];}`;
         await fs.appendFile(outputPath, iconsDartArray);
     }
     // Delete iconsets for redundency
