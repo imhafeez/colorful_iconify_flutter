@@ -4,8 +4,8 @@ version: 0.0.3
 homepage: 'https://github.com/andronasef/iconify_flutter'
 
 environment:
-  sdk: ''
-  flutter: ''
+  sdk: '>=2.10.0 <3.0.0'
+  flutter: 'any'
 
 dependencies:
   flutter:
