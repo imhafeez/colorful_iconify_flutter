@@ -1,11 +1,11 @@
 name: colorful_iconify_flutter
 description: 'complmentary icon library for iconify flutter'
-version: 0.0.2
+version: 0.0.3
 homepage: 'https://github.com/andronasef/iconify_flutter'
 
 environment:
-  sdk: '>=2.16.1 <3.0.0'
-  flutter: '>=1.17.0'
+  sdk: ''
+  flutter: ''
 
 dependencies:
   flutter:
