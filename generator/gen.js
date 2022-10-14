@@ -54,6 +54,7 @@ import { promises as fs } from 'fs';
       continue;
     }
     if (iconset == 'fluent-emoji') continue;
+    if (iconset == 'noto-v1') continue;
 
     // Read file
     // if (iconset == "flat-color-icons.json") {
